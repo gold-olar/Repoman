@@ -49,8 +49,30 @@ class HTML {
   }
 }
 
-// variables
 
+const renderExpenses = (array) => {
+  for (expense in array){
+    const tr = document.createElement("tr");
+    // console.log(array[expense]);
+    tr.innerHTML = `
+    <td> ${array[expense].expenseName}  </td>
+    <td> ${array[expense].priority}  </td>
+    <td> ${array[expense].fundAllocated}  </td>
+    `
+    console.log(tr);
+
+    table.append(tr);
+    console.log(array[expense]);
+  }
+
+
+
+}
+
+
+
+// variables
+const table = document.getElementById('table');
 const addExpenseForm = document.querySelector("#expenseform");
 const addBudgetForm = document.querySelector("#budgetform");
 let userBudget = document.querySelector("#userbudget").value;
@@ -76,47 +98,51 @@ function eventListeners() {
 
   //   when user adds budget
   addBudgetForm.addEventListener("submit", function(e) {
-
     e.preventDefault();
 
     if (userbudget.value === 0 || userBudget.value === "" || userBudget.value === null) {
       //   alert("enter value budget");
     } else {
       // console.log(userbudget.value)
-      //
+
       // instantiate new budget
       const budgetValue = parseInt(userbudget.value);
       budget = new Budget(budgetValue);
       totalBudget = budgetValue;
 
       //  instantiate html class
-      html.insertBudget(budget.budget);
+      // html.insertBudget(budget.budget);
       // console.log(budget);
 
     }
   });
 
 
-
-
   // TO calculate Budget;
 const calculateBudget = async () => {
     let totalPriority = 0;
-
+    let totalInversePriority = 0;
 
     await expenseArray.map((expense) => {
       totalPriority = eval(parseInt(totalPriority) + parseInt(expense.priority));
     });
+
     await expenseArray.map((expense) => {
       expense.inversePriority = eval(parseInt(totalPriority) - expense.priority);
     });
 
     await expenseArray.map((expense) => {
-      const {inversePriority} = expense;
-      console.log(inversePriority, totalPriority);
-      expense.fundAllocated = eval((parseInt(inversePriority) / parseInt(totalPriority) ) * parseInt(totalBudget));
+      totalInversePriority = eval(parseInt(totalInversePriority) +  parseInt(expense.inversePriority));
     })
+    console.log(totalInversePriority);
+    await expenseArray.map((expense) => {
+      const {inversePriority} = expense;
+      // console.log(inversePriority, totalPriority);
+      expense.fundAllocated = Math.floor(eval((parseInt(inversePriority) / parseInt(totalInversePriority) ) * parseInt(totalBudget)));
+    })
+    // console.log(expenseArray);
 
+     renderExpenses(expenseArray);
   return expenseArray;
 }
 
@@ -142,7 +168,12 @@ calculateBtn.addEventListener('click', calculateBudget);
     if (expenseName === "") {
       html.printMessage("fill Empty Fields", "alert-danger");
     } else {
-      html.addExpenseToList(expenseName, priority);
+      //Do nothing yet
+      console.log(`Added ${expenseName} to expenses`);
+      // html.addExpenseToList(expenseName, priority);
     }
   });
 }
+
+
+console.log('O ti live')

@@ -10,3 +10,7 @@ div.expenseslist {
   border-radius: 20px;
   padding: 20px 20px;
 }
+th,td{
+  padding: 10px;
+  
+}
