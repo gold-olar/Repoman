@@ -3,51 +3,112 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="style.css" />
     <title>Document</title>
   </head>
   <body>
-    <form id="budgetform" action="#">
-      <label for="budgetvalue"> Enter Your Budget</label>
-      <input type="number" name="userbudget" id="userbudget" />
-      <button type="submit">submit budget</button>
-    </form>
-    <form id="expenseform" action="#">
-      <div class="primary"></div>
-      <label for="expensename"> Enter Your expense</label>
-      <input type="text" name="expensename" id="expensename" />
-      <label for="expensevalue"> Select Priority</label>
-      <select id="priorities">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
-      <button type="submit">Add expense</button>
-    </form>
+    <h1 class ='text-center'> HERA BUDGET APP</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col">
+          <div class="card" style="width: 20rem;">
+          <div class="card-body">
+            <h5 class="card-title">Enter Your Budget</h5>
+            <form id="budgetform" >
+              <div class="form-group">
 
-    <div class="userinfo">
-      <h3>Budget: <span id="budgettotal"></span></h3>
-      <h3>Expenses: <span id="expensetotal"></span></h3>
-      <h3>Balance:<span id="left"></span></h3>
+                <input type="number" class="form-control" name="userbudget" id="userbudget">
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+
+        </div>
+
+      </div>
+      <br>
+      <!-- Enter Expense Form -->
+      <div class="row">
+        <div class="col">
+          <div class="card" style="width: 20rem;">
+          <div class="card-body">
+            <h5 class="card-title">Enter Expense Item </h5>
+            <form id="expenseform" >
+              <div class="form-group">
+
+                <input type="text" class="form-control" name="expensename" id="expensename">
+              </div>
+              <div class="form-group">
+                <label for="expensevalue"> Select Priority</label>
+                <select class="form-control" id="priorities">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+
+        </div>
+
+      </div>
+      <br>
+
+      <br>
+        <button class="btn btn-primary" type="button" id="calculate" name="button">Calculate Budget</button>
+
+
     </div>
+    <div class="col-md-6">
+      <div class="card" >
+        <h1 class="text-center" > Expense List</h1>
+      <div class="card-body">
+  <table id = "table" class="table">
+  <thead>
+    <tr>
+      <th scope="col">Expense</th>
+      <th scope="col">Priority</th>
+      <th scope="col">Fund Allocated</th>
+    </tr>
+  </thead>
 
-    <div id="expenses">
-      <h1>Expense List</h1>
-      <table id="table">
-        <tr>
-          <th>Expense</th>
-          <th>Priority</th>
-          <th>Fund Allocated</th>
-        </tr>
+</table>
 
-      </table>
-      <ul class="list-group"></ul>
+      </div>
+    </div>
+    <!-- BUDGET AND TOTAL EXPENSES -->
+    <br>
+    <div class="row">
+      <div class="col">
+        <div class="card" style="width: 20rem;">
+        <div class="card-body">
+            <h4>Budget: <span id="budgettotal"></span></h4>
+            <h4>Expenses: <span id="expensetotal"></span></h4>
+            <h4>Balance:<span id="left"></span></h4>
 
-      <br><br><br>
-      <button type="button" id="calculate" name="button">Calculate Budget</button>
+        </div>
+      </div>
+
+      </div>
+
+    </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
     </div>
     <script src="main.js"></script>
   </body>
