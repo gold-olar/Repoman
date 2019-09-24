@@ -1,0 +1,12 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+form,
+div.userinfo,
+div.expenseslist {
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 20px 20px;
+}

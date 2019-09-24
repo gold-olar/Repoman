@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="budgetform" action="#">
+      <label for="budgetvalue"> Enter Your Budget</label>
+      <input type="number" name="userbudget" id="userbudget" />
+      <button type="submit">submit budget</button>
+    </form>
+    <form id="expenseform" action="#">
+      <div class="primary"></div>
+      <label for="expensename"> Enter Your expense</label>
+      <input type="text" name="expensename" id="expensename" />
+      <label for="expensevalue"> Select Priority</label>
+      <select id="priorities">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <button type="submit">expense</button>
+    </form>
+
+    <div class="userinfo">
+      <h3>Budget: <span id="budgettotal"></span></h3>
+      <h3>Expenses: <span id="expensetotal"></span></h3>
+      <h3>Balance:<span id="left"></span></h3>
+    </div>
+
+    <div id="expenses">
+      <ul class="list-group"></ul>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
